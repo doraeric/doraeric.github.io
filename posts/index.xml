@@ -3,12 +3,22 @@
         <title>All Posts - Eric&#39;s Blog</title>
         <link>https://freecat.me/posts/</link>
         <description>All Posts | Eric&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-TW</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.</copyright><lastBuildDate>Thu, 29 Jun 2023 21:39:47 &#43;0800</lastBuildDate><atom:link href="https://freecat.me/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-TW</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.</copyright><lastBuildDate>Sat, 26 Aug 2023 16:18:37 &#43;0800</lastBuildDate><atom:link href="https://freecat.me/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Android OTG 手機對接傳檔案</title>
+    <link>https://freecat.me/2023/08/android-otg/</link>
+    <pubDate>Sat, 26 Aug 2023 16:18:37 &#43;0800</pubDate>
+    <author>Eric Hsieh</author>
+    <guid>https://freecat.me/2023/08/android-otg/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/cover.jpg" referrerpolicy="no-referrer">
+            </div>沒錯，就跟看到的圖一樣，兩隻手機直接用 Type-C 對接就可以傳檔案了！ 最近在研究用手機和平板代替帶筆電出門的可行性，再加上有看到別人直接這樣用，所以測]]></description>
+</item>
+<item>
     <title>部落格誕生了！</title>
-    <link>https://freecat.me/blog-start/</link>
+    <link>https://freecat.me/2023/06/blog-start/</link>
     <pubDate>Thu, 29 Jun 2023 21:39:47 &#43;0800</pubDate>
     <author>Eric Hsieh</author>
-    <guid>https://freecat.me/blog-start/</guid>
+    <guid>https://freecat.me/2023/06/blog-start/</guid>
     <description><![CDATA[緣起 在畢業後終於有一小段時間時間是徹底屬於自己的了。打開 trello 想把以前的代辦事項處理掉，看到三年多前記下要寫資安 writeup&hellip; &hellip; 不是，我怎麼可能記得三年前在]]></description>
 </item>
 </channel>

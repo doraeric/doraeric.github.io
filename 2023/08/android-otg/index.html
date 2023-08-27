@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Android OTG 手機對接傳檔案 - Eric&#39;s Blog</title><meta name="Description" content="Open Source &amp; Hack"><meta property="og:title" content="Android OTG 手機對接傳檔案" />
+<meta property="og:description" content="沒錯，就跟看到的圖一樣，兩隻手機直接用 Type-C 對接就可以傳檔案了！ 最近在研究用手機和平板代替帶筆電出門的可行性，再加上有看到別人直接這樣用，所以測" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://freecat.me/2023/08/android-otg/" /><meta property="og:image" content="https://freecat.me/2023/08/android-otg/cover.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-08-26T16:18:37+08:00" />
+<meta property="article:modified_time" content="2023-08-27T18:08:13+08:00" /><meta property="og:site_name" content="Eric&#39;s Blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://freecat.me/2023/08/android-otg/cover.jpg"/>
+<meta name="twitter:title" content="Android OTG 手機對接傳檔案"/>
+<meta name="twitter:description" content="沒錯，就跟看到的圖一樣，兩隻手機直接用 Type-C 對接就可以傳檔案了！ 最近在研究用手機和平板代替帶筆電出門的可行性，再加上有看到別人直接這樣用，所以測"/>
+<meta name="application-name" content="Eric&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="Eric&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://freecat.me/2023/08/android-otg/" /><link rel="prev" href="https://freecat.me/2023/06/blog-start/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Android OTG 手機對接傳檔案",
+        "inLanguage": "zh-TW",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/freecat.me\/2023\/08\/android-otg\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/freecat.me\/images\/avatar.png",
+                            "width":  716 ,
+                            "height":  716 
+                        }],"genre": "posts","wordcount":  1328 ,
+        "url": "https:\/\/freecat.me\/2023\/08\/android-otg\/","datePublished": "2023-08-26T16:18:37+08:00","dateModified": "2023-08-27T18:08:13+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "Eric Hsieh","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/freecat.me\/images\/avatar.png",
+                    "width":  716 ,
+                    "height":  716 
+                }},"author": {
+                "@type": "Person",
+                "name": "Eric Hsieh"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Eric&#39;s Blog">Eric&#39;s Blog<span class="header-title-post"><i class="fa-solid fa-feather"></i></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Eric&#39;s Blog">Eric&#39;s Blog<span class="header-title-post"><i class="fa-solid fa-feather"></i></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Android OTG 手機對接傳檔案</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Eric Hsieh</a></span></div>
+            <div class="post-meta-line"><span title="Created: 2023-08-26 16:18:37">
+                    <i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-08-26T16:18:37&#43;08:00">2023-08-26</time>&nbsp;
+                </span>
+                <i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1328 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/2023/08/android-otg/cover.jpg"
+        data-srcset="/2023/08/android-otg/cover.jpg, /2023/08/android-otg/cover.jpg 1.5x, /2023/08/android-otg/cover.jpg 2x"
+        data-sizes="auto"
+        alt="/2023/08/android-otg/cover.jpg"
+        title="/2023/08/android-otg/cover.jpg" width="673" height="711" /></div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#xperia---pixel">Xperia &lt;- Pixel</a></li>
+    <li><a href="#pixel---xperia">Pixel &lt;- Xperia</a></li>
+    <li><a href="#測試過程">測試過程</a></li>
+    <li><a href="#第三方檔案程式">第三方檔案程式</a></li>
+    <li><a href="#ios">iOS</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>沒錯，就跟看到的圖一樣，兩隻手機直接用 Type-C 對接就可以傳檔案了！</p>
+<p>最近在研究用手機和平板代替帶筆電出門的可行性，再加上有看到別人直接這樣用，所以測試一下到底要怎麼弄。我之前只有偶然成功觸發過，後來又傳不了檔案，所以設定沒調對的話是用不了的。</p>
+<p>先說測試出來的重點：</p>
+<ol>
+<li>兩隻手機必須擔任不同角色，一隻當電腦，一隻當外接 usb</li>
+<li>當電腦的那隻手機要負責提供電源，不要選到檔案傳輸</li>
+<li>當外接 usb 的那隻手機要選檔案傳輸的選項</li>
+<li>當電腦的那隻手機要用 android <strong>內建的檔案瀏覽器</strong>才有權限可以直接看到另一隻手機的檔案</li>
+<li>只有當電腦的那隻手機可以同時看到兩隻手機的檔案，當外接的那隻看不到另一隻</li>
+</ol>
+<p>我用詞可能沒有很精確，反正重要的是聽的懂就好</p>
+<p>測試用的兩隻手機是 xperia 和 pixel，分別是 android 8 和 13。有可能是 xperia 版本比較舊，所以雙向溝通的部份沒那麼順利，但設定調對一樣可以通。</p>
+<h2 id="xperia---pixel">Xperia &lt;- Pixel</h2>
+<p>假設 xperia 這隻當電腦，pixel 這隻當外接的</p>
+<ul>
+<li>xperia 要選擇「提供電源」</li>
+<li>pixel 的 usb 用途選擇「檔案轉移 / Android Auto」</li>
+<li>pixel 中還有個「USB 的控制裝置」，選「這個裝置」</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://github.com/doraeric/doraeric.github.io/assets/16789570/fe82d863-3e31-48b2-b8ca-23f06d9783ca"
+        data-srcset="https://github.com/doraeric/doraeric.github.io/assets/16789570/fe82d863-3e31-48b2-b8ca-23f06d9783ca, https://github.com/doraeric/doraeric.github.io/assets/16789570/fe82d863-3e31-48b2-b8ca-23f06d9783ca 1.5x, https://github.com/doraeric/doraeric.github.io/assets/16789570/fe82d863-3e31-48b2-b8ca-23f06d9783ca 2x"
+        data-sizes="auto"
+        alt="https://github.com/doraeric/doraeric.github.io/assets/16789570/fe82d863-3e31-48b2-b8ca-23f06d9783ca"
+        title="case 1" /></p>
+<p>「USB 的控制裝置」找到的英文原文是 &ldquo;USB controlled by&rdquo;，但不管中文還是英文都聽不太懂它的意思。我自己是理解成「USB 外接裝置是&hellip;」，感覺比較白話</p>
+<p>Xperia 可以找到一個內建叫「檔案」的應用程式，打開來可以看到 pixel 上的檔案。</p>
+<p><strong>注意</strong>：必須是內建的才有系統的權限，從 Google Play 安裝看起來差不多的程式是沒用的。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://github.com/doraeric/doraeric.github.io/assets/16789570/c6826456-f75b-49b4-a14e-1efcf5dfd7b4"
+        data-srcset="https://github.com/doraeric/doraeric.github.io/assets/16789570/c6826456-f75b-49b4-a14e-1efcf5dfd7b4, https://github.com/doraeric/doraeric.github.io/assets/16789570/c6826456-f75b-49b4-a14e-1efcf5dfd7b4 1.5x, https://github.com/doraeric/doraeric.github.io/assets/16789570/c6826456-f75b-49b4-a14e-1efcf5dfd7b4 2x"
+        data-sizes="auto"
+        alt="https://github.com/doraeric/doraeric.github.io/assets/16789570/c6826456-f75b-49b4-a14e-1efcf5dfd7b4"
+        title="xperia-file" /></p>
+<h2 id="pixel---xperia">Pixel &lt;- Xperia</h2>
+<p>現在反過來，pixel 當電腦，xperia 當外接的</p>
+<ul>
+<li>xperia 選「檔案傳輸」</li>
+<li>pixel 的 USB 的控制裝置選「已連接的裝置」</li>
+</ul>
+<p>這時候其實 pixel 會自動禁用「USB 用途」的選項，你也沒得選。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://github.com/doraeric/doraeric.github.io/assets/16789570/6491f25d-1f47-4e54-83ac-9269bd34b209"
+        data-srcset="https://github.com/doraeric/doraeric.github.io/assets/16789570/6491f25d-1f47-4e54-83ac-9269bd34b209, https://github.com/doraeric/doraeric.github.io/assets/16789570/6491f25d-1f47-4e54-83ac-9269bd34b209 1.5x, https://github.com/doraeric/doraeric.github.io/assets/16789570/6491f25d-1f47-4e54-83ac-9269bd34b209 2x"
+        data-sizes="auto"
+        alt="https://github.com/doraeric/doraeric.github.io/assets/16789570/6491f25d-1f47-4e54-83ac-9269bd34b209"
+        title="case 2" /></p>
+<p>再來就是神奇的部份了！pixel 內建的檔案瀏覽器其實沒有任何啟動的 icon，也就是你只能等手機自己跳出系統的檔案應用程式，沒辦法手動直接啟動它。如果你把那個自動跳出的檔案程式拉掉（清掉）的話，也只能重插 USB 希望它跳出來。到底？？</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://github.com/doraeric/doraeric.github.io/assets/16789570/60e90f4e-8d0a-4338-9e5d-5c4494e783eb"
+        data-srcset="https://github.com/doraeric/doraeric.github.io/assets/16789570/60e90f4e-8d0a-4338-9e5d-5c4494e783eb, https://github.com/doraeric/doraeric.github.io/assets/16789570/60e90f4e-8d0a-4338-9e5d-5c4494e783eb 1.5x, https://github.com/doraeric/doraeric.github.io/assets/16789570/60e90f4e-8d0a-4338-9e5d-5c4494e783eb 2x"
+        data-sizes="auto"
+        alt="https://github.com/doraeric/doraeric.github.io/assets/16789570/60e90f4e-8d0a-4338-9e5d-5c4494e783eb"
+        title="pixel-file" /></p>
+<h2 id="測試過程">測試過程</h2>
+<p>還有些不太重要的過程。就是測試中只能從 xperia 那隻切換角色，在 pixel 上切換「USB 的控制裝置」會顯示無法切換，這就是我說的雙向溝通好像不太順利的部份。而且 xperia 那隻其實沒有 USB 控制裝置的選項，要直接選到對的 USB 用途。不知道是不是 android 版本比較舊的關係。</p>
+<h2 id="第三方檔案程式">第三方檔案程式</h2>
+<p>前面說只有系統內建的檔案程式才有權限看到，但其實第三方的程式可以「呼叫」出內建的檔案程式，設定好後也是可以讀取的，算是比較間接的方式。</p>
+<p>我自己是常用 <a href="https://mixplorer.com/" target="_blank" rel="noopener noreffer ">MiXplorer</a> 這個管理檔案。在他們的<a href="https://forum.xda-developers.com/t/mixplorer-q-a-and-faq-user-manual.3308582/page-94#post-85878051" target="_blank" rel="noopener noreffer ">說明</a>中，似乎將那個內建的檔案瀏覽器稱為 Document Provider。</p>
+<p>在把線接好、USB 選好後，開啟 mix</p>
+<ol>
+<li>側邊欄</li>
+<li>右上角 -&gt; Add storage</li>
+<li>Document provider (USB OTG, &hellip;)</li>
+<li>找到另一隻手機的空間，選取</li>
+</ol>
+<p>它會新增一個書籤，點開就可以看到檔案。</p>
+<p>如果要刪除書籤，把書籤項目往右滑可以看到刪除選項（個人覺得這 UX 實在不太好啊，應該是要長按才對吧）</p>
+<p>不知道是不是 android 的系統限制讓第三方程式無法直接看到其他的檔案空間。</p>
+<h2 id="ios">iOS</h2>
+<p>最後再測試 android 對接 iPad。結論是 android 可以讀 iPad，iPad 不能讀 android，嘻嘻。不過之前看過有人給 iPhone 讀 OTG 隨身碟，可能只是我沒測出來怎麼用吧。</p>
+<p>USB 選法規則同上，android 當電腦。選好後通知欄有個 Android 系統的通知「已連線至 iPad 輕觸即可查看檔案」。選「媒體傳輸通訊協定主機」會直接跳出系統的檔案程式，可以看到 DCIM 資料夾和照片，但看不到 iPad 上各個程式的檔案。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span title="Modified: 2023-08-27 18:08:13">Updated on
+                    <time datetime="2023-08-27T18:08:13&#43;08:00">2023-08-27</time></span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/2023/08/android-otg/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://freecat.me/2023/08/android-otg/" data-title="Android OTG 手機對接傳檔案" data-via="doraeric93"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://freecat.me/2023/08/android-otg/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://freecat.me/2023/08/android-otg/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://freecat.me/2023/08/android-otg/" data-title="Android OTG 手機對接傳檔案"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Instapaper" data-sharer="instapaper" data-url="https://freecat.me/2023/08/android-otg/" data-title="Android OTG 手機對接傳檔案" data-description=""><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/instapaper.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Pocket" data-sharer="pocket" data-url="https://freecat.me/2023/08/android-otg/"><i class="fab fa-get-pocket fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2023/06/blog-start/" class="prev" rel="prev" title="部落格誕生了！"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>部落格誕生了！</a></div>
+</div>
+<div id="comments"><div id="giscus" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://giscus.app">Giscus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.117.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Eric Hsieh</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"giscus":{"category":"Announcements","categoryId":"DIC_kwDOJ2OiIM4CXl-J","darkTheme":"dark","emitMetadata":"0","inputPosition":"bottom","lang":"en","lazyLoading":true,"lightTheme":"light","mapping":"pathname","reactionsEnabled":"1","repo":"doraeric/doraeric.github.io","repoId":"R_kgDOJ2OiIA"}},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript" src="/js/custom.js"></script></body>
+</html>
