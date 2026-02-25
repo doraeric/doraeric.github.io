@@ -76,7 +76,7 @@ sudo mkinitcpio -p linux617
 
 接著重開機就好
 
-可以再確認版本有 rollback，`journalctl` 中也沒有錯誤了
+可以再確認版本有 rollback，~~`journalctl` 中也沒有錯誤了~~（rollback 後還是有發生當機，看來只能等 amd 修好了）
 
 ```sh
 sudo cat /sys/kernel/debug/dri/0000:c1:00.0/amdgpu_firmware_info
